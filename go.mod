@@ -1,7 +1,7 @@
 module github.com/go-nag/configuration-example
 
 require (
-	github.com/go-nag/configuration v0.0.0
+	github.com/go-nag/configuration v0.1.1
 	github.com/labstack/echo/v4 v4.9.1
 )
 
@@ -20,7 +20,5 @@ require (
 	golang.org/x/time v0.0.0-20201208040808-7e3f01d25324 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
-
-replace github.com/go-nag/configuration v0.0.0 => ../configuration
 
 go 1.19

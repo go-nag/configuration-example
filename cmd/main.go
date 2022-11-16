@@ -8,15 +8,12 @@ import (
 	"log"
 )
 
-func main() {
-	manager, err := cfgl.LoadConfigFile("local")
-	if err != nil {
-		log.Fatal(err)
-	}
+var cfg, _ = cfgl.LoadConfigFile("local")
 
+func main() {
 	e := echo.New()
 
-	loggerEnabled, err := manager.Get("server.logging")
+	loggerEnabled, err := cfg.Get("server.logging")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -27,7 +24,5 @@ func main() {
 	}
 	e.Use(middleware.Recover())
 
-	manager.GetOrDefault("port", "9000")
-
-	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", manager.GetOrDefault("port", "9000"))))
+	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", cfg.GetOrDefault("port", "9000"))))
 }
