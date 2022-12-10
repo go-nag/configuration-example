@@ -1,7 +1,7 @@
 module github.com/go-nag/configuration-example
 
 require (
-	github.com/go-nag/configuration v0.1.1
+	github.com/go-nag/configuration v0.2.0
 	github.com/labstack/echo/v4 v4.9.1
 )
 

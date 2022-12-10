@@ -1,3 +1,9 @@
 port: 8080
 server:
   logging: enabled
+
+array:
+  value:
+    - test1
+    - test2
+    - test3

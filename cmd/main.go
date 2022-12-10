@@ -2,13 +2,13 @@ package main
 
 import (
 	"fmt"
-	"github.com/go-nag/configuration/cfgl"
+	"github.com/go-nag/configuration/cfgm"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
 	"log"
 )
 
-var cfg, _ = cfgl.LoadConfigFile("local")
+var cfg, _ = cfgm.LoadConfigFile("local")
 
 func main() {
 	e := echo.New()
@@ -23,6 +23,10 @@ func main() {
 		e.Use(middleware.Logger())
 	}
 	e.Use(middleware.Recover())
+
+	arr := cfg.GetArr("array.value")
+	// Logs 2022/12/10 16:52:55 [test1 test2 test3]
+	log.Println(arr)
 
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", cfg.GetOrDefault("port", "9000"))))
 }
